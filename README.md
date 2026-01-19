@@ -1,6 +1,6 @@
 # 🇭🇺 Magyar Számok - Hungarian Number Converter
 
-![Magyar Számok](https://raw.githubusercontent.com/SzmrLevee/magyar_szamok/main/logo.png)
+![Magyar Számok](img.png)
 
 > Egy egyszerű és hatékony JavaScript könyvtár számok magyar nyelvre történő konvertálásához.
 
@@ -166,8 +166,8 @@ ISC
 
 ---
 
-**Készítette**: SzmrLevee  
-**Verzió**: 1.0.0  
+**Készítette**: SzmrLevee
+**Verzió**: 1.0.0
 **Utolsó frissítés**: 2026. január 19.
 
 > 💡 **Tipp**: Ez a projekt kiváló példa a Test Driven Development (TDD) megközelítésre JavaScript környezetben.
