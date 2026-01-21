@@ -1,7 +1,5 @@
 # 🇭🇺 Magyar Számok - Hungarian Number Converter
 
-![Magyar Számok](img.png)
-
 > Egy egyszerű és hatékony JavaScript könyvtár számok magyar nyelvre történő konvertálásához.
 
 ## 📋 Tartalomjegyzék
@@ -26,13 +24,14 @@ pnpm install
 import magyarSzam from './lib/magyarSzam.js';
 
 // Alapvető használat
-console.log(magyarSzam(1)); // "egy"
-console.log(magyarSzam(2)); // "kettő"
+console.log(magyarSzam(5)); // "öt"
 console.log(magyarSzam(12)); // "tizenkettő"
+console.log(magyarSzam(45)); // "negyvenöt"
+console.log(magyarSzam(68)); // "hatvannyolc"
 
 // Jelzős használat
 console.log(magyarSzam(2, true)); // "két"
-console.log(magyarSzam(12, true)); // "tizenkét"
+console.log(magyarSzam(32, true)); // "harminckét"
 ```
 
 ## 📖 API Dokumentáció
@@ -43,7 +42,7 @@ Konvertál egy számot magyar szövegre.
 
 #### Paraméterek
 
-- **number** (`number`): A konvertálandó szám (0-19)
+- **number** (`number`): A konvertálandó szám (0-99)
 - **jelző** (`boolean`, opcionális): Ha `true`, akkor jelzős alakot ad vissza ahol releváns
 
 #### Visszatérési érték
@@ -54,7 +53,9 @@ Konvertál egy számot magyar szövegre.
 
 - **0-10**: nulla, egy, kettő, három, négy, öt, hat, hét, nyolc, kilenc, tíz
 - **11-19**: tizenegy, tizenkettő, tizenhárom, ... tizenkilenc
-- **Jelzős alakok**: két, tizenkét
+- **20-29**: húsz, huszonegy, huszonkettő, ... huszonkilenc
+- **30-99**: harminc, harmincegy, ... kilencvenkilenc
+- **Jelzős alakok**: két, harminckét, negyvenkét, stb.
 
 ## 🧪 Tesztelés
 
@@ -74,7 +75,9 @@ A könyvtár az alábbi eseteket teszteli:
 
 - ✅ 0-10 számok alapvető konvertálása
 - ✅ 11-19 számok (tizen-es számok)
-- ✅ Jelzős alakok (két, tizenkét)
+- ✅ 20-29 számok (huszon-os számok)
+- ✅ 30-99 számok (összetett tízes számok)
+- ✅ Jelzős alakok (két, harminckét, stb.)
 - ✅ Boundary értékek tesztelése
 
 ## 📝 Példák
@@ -88,12 +91,15 @@ magyarSzam(5);  // "öt"
 magyarSzam(10); // "tíz"
 ```
 
-### Tizen-es számok
+### Tizen-es és összetett számok
 
 ```javascript
 magyarSzam(11); // "tizenegy"
 magyarSzam(15); // "tizenöt"
-magyarSzam(19); // "tizenkilenc"
+magyarSzam(22); // "huszonkettő"
+magyarSzam(45); // "negyvenöt"
+magyarSzam(68); // "hatvannyolc"
+magyarSzam(80); // "nyolcvan"
 ```
 
 ### Jelzős alakok
@@ -102,8 +108,8 @@ magyarSzam(19); // "tizenkilenc"
 magyarSzam(2);       // "kettő"
 magyarSzam(2, true); // "két"
 
-magyarSzam(12);       // "tizenkettő"
-magyarSzam(12, true); // "tizenkét"
+magyarSzam(32);       // "harminckettő"
+magyarSzam(32, true); // "harminckét"
 ```
 
 ## 🛠 Fejlesztés
@@ -115,7 +121,8 @@ MAGYAR_SZAMOK/
 ├── lib/
 │   └── magyarSzam.js      # Fő könyvtár
 ├── tests/
-│   └── magyarSzamok.test.js # Tesztek
+│   ├── magyarSzamok.test.js # Fő tesztek
+│   └── helyiertek.test.js   # Helyiérték tesztek
 ├── package.json
 └── README.md
 ```
@@ -148,17 +155,20 @@ MAGYAR_SZAMOK/
 Ez a projekt egy TDD (Test Driven Development) megközelítést demonstrál:
 
 1. **Kezdeti lépések**: Projekt inicializálás és Vitest telepítés
-2. **Első tesztek**: Egyszerű számok konvertálása
+2. **Első tesztek**: Egyszerű számok konvertálása (0-10)
 3. **Jelzős alakok**: Speciális esetek kezelése (két vs. kettő)
-4. **Refaktorálás**: Kód optimalizálás objektum használatával
-5. **Tizen-es számok**: Összetettebb logika implementálása
+4. **Tizen-es számok**: Összetett logika (11-19)
+5. **Huszon-os számok**: További összetett esetek (20-29)
+6. **Teljes spektrum**: 30-99 számok támogatása
+7. **Refaktorálás**: Kód optimalizálás és hibák javítása
 
 ## 🚦 Állapot
 
-- ✅ 0-19 számok támogatása
-- ✅ Jelzős alakok
+- ✅ 0-99 számok teljes támogatása
+- ✅ Jelzős alakok minden releváns számnál
 - ✅ Teljes teszt lefedettség
-- 🔄 További számok támogatása (jövőbeli fejlesztés)
+- ✅ Hibamentes működés
+- 🔄 100+ számok támogatása (jövőbeli fejlesztés)
 
 ## 📜 Licenc
 
@@ -168,6 +178,6 @@ ISC
 
 **Készítette**: SzmrLevee
 **Verzió**: 1.0.0
-**Utolsó frissítés**: 2026. január 19.
+**Utolsó frissítés**: 2026. január 21.
 
 > 💡 **Tipp**: Ez a projekt kiváló példa a Test Driven Development (TDD) megközelítésre JavaScript környezetben.

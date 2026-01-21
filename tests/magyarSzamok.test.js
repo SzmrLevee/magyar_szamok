@@ -21,6 +21,17 @@ test.each([
 
   [12, false, 'tizenkettő'],
   [12, true, 'tizenkét'],
+  [20, false, 'húsz'],
+  [21, false, 'huszonegy'],
+  [22, false, 'huszonkettő'],
+  [22, true, 'huszonkét'],
+  [29, false, 'huszonkilenc'],
+
+  [30, false, 'harminc'],
+  [31, false, 'harmincegy'],
+  [32, true, 'harminckét'],
+  [42, true, 'negyvenkét'],
+
 ])('converts $0 with jelző $1', (n, jelző, expected) => {
   expect(magyarSzam(n, jelző)).toBe(expected);
 });
