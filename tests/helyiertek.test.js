@@ -1,59 +1,92 @@
-import { describe, it, expect } from "vitest";
-import magyarSzam from '../lib/magyarSzam.js';
+import { describe, expect, it } from "vitest";
+import { egyes, tizes, szazas, ezres, maradek } from "../lib/magyarSzam";
 
-describe('magyarSzam', () => {
-  it("converts 5 with jelzo false", () => {
-    expect(magyarSzam(5)).toBe("öt");
-  })
-  it("converts 3 with jelzo false", () => {
-    expect(magyarSzam(3)).toBe("három");
-  })
-  it("converts 9 with jelzo true", () => {
-    expect(magyarSzam(9)).toBe("kilenc");
-  })
-  it("converts 10 with jelzo false", () => {
-    expect(magyarSzam(10)).toBe("tíz");
-  })
-  it("converts 12 with jelzo false", () => {
-    expect(magyarSzam(12)).toBe("tizenkettő");
-  })
-  it("converts 15 with jelzo false", () => {
-    expect(magyarSzam(15)).toBe("tizenöt");
-  })
-  it("converts 18 with jelzo false", () => {
-    expect(magyarSzam(18)).toBe("tizennyolc");
-  })
-  it("converts 22 with jelzo false", () => {
-    expect(magyarSzam(22)).toBe("huszonkettő");
-  })
-  it("converts 25 with jelzo false", () => {
-    expect(magyarSzam(25)).toBe("huszonöt");
-  })
-  it("converts 30 with jelzo false", () => {
-    expect(magyarSzam(30)).toBe("harminc");
-  })
-  it("converts 32 with jelzo true", () => {
-    expect(magyarSzam(32)).toBe("harminckettő");
-  })
-  it("converts 45 with jelzo false", () => {
-    expect(magyarSzam(45)).toBe("negyvenöt");
-  })
-  it("converts 50 with jelzo false", () => {
-    expect(magyarSzam(50)).toBe("ötven");
-  })
-  it("converts 57 with jelzo false", () => {
-    expect(magyarSzam(57)).toBe("ötvenhét");
-  })
-  it("converts 60 with jelzo false", () => {
-    expect(magyarSzam(60)).toBe("hatvan");
-  })
-  it("converts 68 with jelzo false", () => {
-    expect(magyarSzam(68)).toBe("hatvannyolc");
-  })
-  it("converts 75 with jelzo false", () => {
-    expect(magyarSzam(75)).toBe("hetvenöt");
-  })
-  it("converts 80 with jelzo false", () => {
-    expect(magyarSzam(80)).toBe("nyolcvan");
-  })
+describe(egyes, () => {
+  it("gives 0 for 0", () => {
+    expect(egyes(0)).toBe(0);
+  });
+  it("gives 4 for 4", () => {
+    expect(egyes(4)).toBe(4);
+  });
+  it("gives 2 for 42", () => {
+    expect(egyes(42)).toBe(2);
+  });
+});
+
+describe(tizes, () => {
+  it("gives 0 for 0", () => {
+    expect(tizes(0)).toBe(0);
+  });
+  it("gives 0 for 1", () => {
+    expect(tizes(1)).toBe(0);
+  });
+  it("gives 3 for 31", () => {
+    expect(tizes(31)).toBe(3);
+  });
+  it("gives 3 for 39", () => {
+    expect(tizes(39)).toBe(3);
+  });
+  it("gives 4 for 40", () => {
+    expect(tizes(40)).toBe(4);
+  });
+  it("gives 4 for 42", () => {
+    expect(tizes(42)).toBe(4);
+  });
+  it("gives 9 for 99", () => {
+    expect(tizes(99)).toBe(9);
+  });
+});
+
+describe(szazas, () => {
+  it("gives 0 for 0", () => {
+    expect(szazas(0)).toBe(0);
+  });
+  it("gives 0 for 99", () => {
+    expect(szazas(99)).toBe(0);
+  });
+  it("gives 1 for 100", () => {
+    expect(szazas(100)).toBe(1);
+  });
+  it("gives 2 for 202", () => {
+    expect(szazas(202)).toBe(2);
+  });
+  it("gives 9 for 999", () => {
+    expect(szazas(999)).toBe(9);
+  });
+});
+
+describe(ezres, () => {
+  it("gives 0 for 0", () => {
+    expect(ezres(0)).toBe(0);
+  });
+  it("gives 0 for 999", () => {
+    expect(ezres(999)).toBe(0);
+  });
+  it("gives 1 for 1000", () => {
+    expect(ezres(1000)).toBe(1);
+  });
+  it("gives 1 for 1999", () => {
+    expect(ezres(1999)).toBe(1);
+  });
+  it("gives 15 for 15652", () => {
+    expect(ezres(15652)).toBe(15);
+  });
+});
+
+describe(maradek, () => {
+  it("gives 0 for 0", () => {
+    expect(maradek(0)).toBe(0);
+  });
+  it("gives 0 for 100", () => {
+    expect(maradek(100)).toBe(0);
+  });
+  it("gives 2 for 202", () => {
+    expect(maradek(202)).toBe(2);
+  });
+  it("gives 12 for 1312", () => {
+    expect(maradek(1312)).toBe(12);
+  });
+  it("gives 99 for 999", () => {
+    expect(maradek(999)).toBe(99);
+  });
 });
